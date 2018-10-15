@@ -1,0 +1,2 @@
+# CodingPractice
+Some practice codes
