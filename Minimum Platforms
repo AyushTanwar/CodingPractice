@@ -1,0 +1,54 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//Input
+    Scanner scn = new Scanner(System.in);
+		int t = scn.nextInt();
+		for(int i =0;i<t;i++){
+		    int n = scn.nextInt();
+		    int []arrival = new int[n];
+		    int []departure = new int[n];
+		    for(int j =0;j<n;j++){
+		        arrival[j] = scn.nextInt();
+		    }
+		    for(int j =0;j<n;j++){
+		        departure[j] = scn.nextInt();
+		    }
+		    //calling minimum platform calculating function
+		    int mp = minCalc(n,arrival,departure);
+		    //output
+        System.out.println(mp);
+		}
+	}
+	//function to calculate minimum platforms
+	public static int minCalc(int n,int[]arrival, int[]departure){
+	    Arrays.sort(arrival);
+	    Arrays.sort(departure);
+	    
+	    int nop=1;//Number of platforms needed
+	    int rv = 1;// minimum number of platforms needed| return value 
+	    
+	    int i = 1,j=0;
+	    
+	    while(i<n&&j<n){
+	        if(arrival[i]<=departure[j]){
+	            nop++;
+	            i++;
+	            if(nop>rv){
+	                rv = nop;
+	            }
+	            
+	        }else{
+	            nop--;
+	            j++;
+	        }
+	    }
+	    
+	    return rv; 
+     }
+}     
