@@ -1,0 +1,80 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner s  = new Scanner(System.in);
+		int t = s.nextInt();
+		for(int i=0;i<t;i++)
+		{
+		    int n = s.nextInt();
+		    int[] arr = new int[n];
+		   for(int j=0;j<n;j++)
+		   arr[j]=s.nextInt();
+		   int te = s.nextInt();
+		   int[] arr1 = new int[n];
+		   arr1=arr;
+		   
+		       int[] arr2 = new int[n];
+		   for(int j=0;j<te;j++)
+		   {
+		       int index = s.nextInt();
+		       int value= s.nextInt();
+		       boolean a = true;
+		       if(index<arr1.length)
+		       {
+		       arr2 = get(index,value,arr1);
+		       
+		           a=false;
+		       }
+		       
+		       arr1 =arr2;
+		       if(a==false)
+		       operate(arr2);
+		       else
+		       System.out.println("-1");
+		   }
+		}
+	}
+	public static int[] get(int index,int value,int[] arr1)
+	{
+	    arr1[index]=value;
+	    return arr1;
+	}
+	
+	public static void operate(int[] arr)
+	{
+	    int k=arr.length;
+	    boolean flag=true;// flag which tells wheyher to perform OR operation pr XOR operation , when True OR when false XOR
+	    while(k!=1)
+	    {
+	       k=k/2;
+	        int[] arr1 = new int[k];
+	        if(flag==true)
+	        for(int i=0;i<arr.length-1;i++)
+	        {
+	            int a = (arr[i]|arr[i+1]);
+	             arr1[i/2]=a;
+	           i++;
+	        }
+	        else
+	         for(int i=0;i<arr.length-1;i++)
+	        {
+	            int a = (arr[i]^arr[i+1]);
+	             arr1[i/2]=a;
+	           i++;
+	        }
+	        
+	        if(flag==true)
+	        flag=false;
+	        else
+	        flag=true;
+	        
+	        arr=arr1;
+	    }
+	    System.out.println(arr[0]);
+	    
+	}
+}
