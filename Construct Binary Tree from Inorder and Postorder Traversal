@@ -17,35 +17,7 @@
  */
 class Solution {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        //iterative
-        // if(inorder.length ==0 || postorder.length == 0) {
-        //     return null;
-        // }
-//         int inCount = inorder.length -1;
-//         int postCount = postorder.length-1;
-//         TreeNode root = new TreeNode(postorder[postCount]);
-//         Stack<TreeNode> tracking = new Stack<>();
-//         tracking.push(root);
-//         postCount--;
         
-//         while(postCount>=0) {
-//             TreeNode curRoot = tracking.peek();
-//             TreeNode next = new TreeNode(postorder[postCount]);
-//             if(inorder[inCount] == curRoot.val) {
-//                 while(!tracking.isEmpty() && tracking.peek().val == inorder[inCount]) {
-//                     curRoot = tracking.pop();
-//                     inCount--;
-//                 }
-//                 curRoot.left = next;
-//             } else {
-//                 curRoot.right = next;
-//             }
-//             tracking.push(next);
-//             postCount--;
-//         }
-//         return root;
-        
-        //recursive
         return buildBinaryTree(inorder, inorder.length-1, 0, postorder, postorder.length-1 );
     }
     
